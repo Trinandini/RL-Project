@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Goal based Robotic Arm simulations</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="container">
+    <h1>Goal based Robotic Arm simulations</h1>
+    <p class="tagline">Click <em>Run &amp; Catch</em> to see three Monte Carlo–guided attempts.</p>
+  </header>
+
+  <main class="container grid">
+    <section class="stage card">
+      <div class="toolbar">
+        <button id="runBtn">▶ Run &amp; Catch</button>
+        <label class="choice">Attempt 3 preference:
+          <select id="attempt3Choice">
+            <option value="up">Up (above object)</option>
+            <option value="down">Down (below object)</option>
+          </select>
+        </label>
+        <button id="resetBtn" class="secondary">Reset</button>
+      </div>
+      <div class="scene-wrap">
+        <img id="sceneImg" src="assets/robot_scene.jpg" alt="Robot arm scene" />
+        <canvas id="overlay"></canvas>
+      </div>
+    </section>
+
+    <aside class="card">
+      <h2>Result</h2>
+      <div id="resultBox" class="result"></div>
+      <details class="explain">
+        <summary>What is Monte Carlo here?</summary>
+        <p>
+          We simulate multiple noisy trajectories from the arm to the target. Each sample is a
+          plausible path considering uncertainty (sensor noise, slip, latency). The controller then
+          chooses a path or updates its aim based on the distribution of outcomes.
+        </p>
+      </details>
+      <div class="log">
+        <h3>Attempt Log</h3>
+        <ol id="log"></ol>
+      </div>
+    </aside>
+  </main>
+
+  <footer class="container foot">
+    <small>Static demo for GitHub Pages. No back-end required.</small>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
